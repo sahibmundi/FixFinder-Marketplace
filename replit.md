@@ -4,12 +4,26 @@ FixFinder helps drivers find nearby, verified mechanics and vehicle-service prof
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server on port 8080 locally; Replit supplies its service port
+- `pnpm --filter @workspace/fixfinder run dev` — run the Vite frontend
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required env: `NEON_DATABASE_URL` — Neon PostgreSQL connection string. `DATABASE_URL` remains supported as a fallback for Replit-managed PostgreSQL.
+- Required auth env: `CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`, and `ADMIN_CLERK_USER_ID`.
+
+## Local Windows setup
+
+1. Install Node.js 20+ and pnpm (`corepack enable`).
+2. Copy `.env.example` to `.env` and fill in the Neon and Clerk values. Never commit `.env`.
+3. Run `pnpm install`.
+4. In PowerShell, run `$env:PORT=8080; pnpm --filter @workspace/api-server run dev`.
+5. In a second PowerShell window, run `$env:PORT=5173; $env:BASE_PATH="/"; pnpm --filter @workspace/fixfinder run dev`.
+
+The development scripts use Node.js instead of Unix-only `export`, `sh`, or Bash commands, so the project can be started from PowerShell or Windows Command Prompt.
+
+The admin account is the Clerk user whose ID is stored in `ADMIN_CLERK_USER_ID`. Sign in with that account at `/sign-in`, then open `/admin` to approve, reject, or suspend provider applications.
 
 ## Stack
 
