@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "FixFinder"
+description = "A local marketplace for discovering nearby mechanics and vehicle-service professionals, with provider onboarding and admin verification workflows."
+version = "1.0.0"
+id = "artifacts/fixfinder"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23775
+
+[services.development]
+run = "pnpm --filter @workspace/fixfinder run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/fixfinder", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/fixfinder/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23775"
+BASE_PATH = "/"

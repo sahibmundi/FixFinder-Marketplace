@@ -1,0 +1,174 @@
+Build a complete, production-quality full-stack web application from scratch called **FixFinder**.
+
+FixFinder is a local marketplace where users can find nearby mechanics and vehicle-service professionals, view their profiles, call them and get directions. Mechanics can join the platform, create their professional profile and appear publicly after admin approval.
+
+## CORE INTERFACES
+
+### 1. CUSTOMER
+
+Create a modern responsive homepage with:
+
+* Search: mechanics, services or shops
+* Location / city selection
+* Categories:
+  Car Mechanic, Bike Mechanic, Auto/Rickshaw, Truck, Tyre & Wheel, Battery/Electrical, AC Repair, Washing & Detailing, Denting/Painting, General Repair
+* Filters: category, location, rating, verified, open/available
+* Mechanic cards with image, shop name, category, services, rating, distance and availability
+* Detailed mechanic profile
+* Call button
+* Get Directions button
+* Services, experience, working hours, availability and reviews
+
+### 2. MECHANIC / SERVICE PROVIDER
+
+Add:
+**“Are you a mechanic? Join FixFinder”**
+
+Use **Clerk Google Authentication**.
+
+After login, allow the provider to create a profile with:
+
+* Profile/shop photo
+* Name
+* Business/shop name
+* Category
+* Services
+* Experience
+* Phone
+* Address
+* City
+* Description
+* Working hours
+* Availability
+* Shop photos
+
+New profiles start as **Pending**.
+
+After admin approval they become **Verified/Active** and automatically appear in customer search.
+
+Providers can edit only their own profiles.
+
+### 3. ADMIN
+
+Create a protected admin dashboard to:
+
+* View providers
+* Approve/reject providers
+* Suspend providers
+* Manage categories
+* View basic platform statistics
+
+## DATABASE
+
+Use **PostgreSQL + Drizzle ORM**.
+
+Create proper relational tables for:
+
+* Users
+* Provider Profiles
+* Categories
+* Services
+* Provider Services
+* Provider Photos
+* Working Hours
+* Reviews
+* Enquiries
+
+Add proper relationships, validation and indexes.
+
+### DUMMY DATA
+
+Seed **20–25 fictional mechanics** across mixed categories and cities such as:
+
+Patiala, Chandigarh, Mohali, Ludhiana and Amritsar.
+
+Include realistic fictional:
+
+* Names
+* Shop names
+* Categories
+* Services
+* Experience
+* Ratings
+* Review counts
+* Addresses
+* Coordinates
+* Working hours
+* Availability
+* Profile/shop images
+
+Use fictional contact information only.
+
+Have mostly verified listings plus a few pending listings so search and admin approval can be tested.
+
+## UI/UX
+
+Make this look like a real startup marketplace, not a college CRUD project.
+
+Use:
+
+* Premium clean responsive UI
+* Mobile-first design
+* Excellent search experience
+* Professional mechanic cards
+* Attractive profile pages
+* Clear CTAs
+* Good typography and spacing
+* Loading/skeleton states
+* Empty states
+* Error handling
+* Toast notifications
+
+Avoid excessive gradients, unnecessary animations and fake UI.
+
+## SECURITY
+
+* Clerk authentication
+* Server-side authorization
+* Role-based access control
+* Provider ownership checks
+* Protected admin routes
+* Input validation
+* Secure image upload validation
+* Never expose secrets
+* Prevent unauthorized profile modification
+
+## TECH STACK
+
+Use a modern production-ready stack:
+
+* React + TypeScript
+* Tailwind CSS
+* Node.js backend/API
+* PostgreSQL
+* Drizzle ORM
+* Clerk authentication
+* Proper REST/API architecture
+
+Keep the architecture clean and scalable so future features can be added:
+
+* Reviews
+* Booking
+* Emergency mechanic
+* WhatsApp/contact
+* Maps
+* Payments
+* Provider analytics
+
+## REQUIRED WORKING FLOW
+
+Customer:
+
+**Home → Search → Filters → Mechanic Listing → Profile → Call/Directions**
+
+Mechanic:
+
+**Join FixFinder → Google Login → Create Profile → Submit → Admin Approval → Public Listing**
+
+Admin:
+
+**Login → Pending Providers → Review → Approve/Reject → Provider Appears Publicly**
+
+Everything must be functional. Do not create placeholder buttons or fake APIs.
+
+Build the application completely, configure the database, seed the dummy data, connect authentication, test the main flows and fix errors before finishing.

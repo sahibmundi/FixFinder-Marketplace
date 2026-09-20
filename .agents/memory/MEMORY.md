@@ -1,0 +1,1 @@
+- [Marketplace auth and contracts](marketplace-auth-and-contracts.md) — public discovery stays open; provider/admin mutations use server-side Clerk checks and OpenAPI-generated hooks.

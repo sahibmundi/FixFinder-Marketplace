@@ -1,6 +1,6 @@
-# [Project name]
+# FixFinder
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+FixFinder helps drivers find nearby, verified mechanics and vehicle-service professionals, while giving providers a reviewed public profile.
 
 ## Run & Operate
 
@@ -22,15 +22,25 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/fixfinder` — React/Vite customer, provider, and admin web app
+- `artifacts/api-server/src/routes/providers.ts` — provider search, onboarding, admin review, stats, and enquiries
+- `lib/api-spec/openapi.yaml` — source of truth for API contracts and generated client hooks
+- `lib/db/src/schema/marketplace.ts` — Drizzle marketplace schema
+- `artifacts/api-server/src/lib/seed.ts` — fictional development marketplace seed data
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Public provider discovery is backed by PostgreSQL and only returns approved providers.
+- Provider onboarding always starts as `pending`; admin status changes control public visibility.
+- Browser auth uses Clerk session cookies; the API keeps ownership and admin checks server-side.
+- API contracts are OpenAPI-first; generated React Query hooks are the frontend integration boundary.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Customers can search and filter nearby mechanics by service, city, rating, verification, and availability.
+- Customers can view a provider profile, call, get directions, or send an enquiry.
+- Providers can sign in with Clerk, submit and edit their own profile, and see review status.
+- Admins can review providers, approve/reject/suspend listings, and view platform totals.
 
 ## User preferences
 
@@ -38,7 +48,8 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Run API codegen after changing `lib/api-spec/openapi.yaml`.
+- Preview workflows provide `PORT` and `BASE_PATH`; direct production builds need those environment variables explicitly.
 
 ## Pointers
 
